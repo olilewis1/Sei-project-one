@@ -1,0 +1,70 @@
+Snake game: 
+Variables: 
+
+HTML: 
+score display
+Div for score display 
+havbe div for outside, and then div for box inside. 
+ 
+
+CSS: to make the game look right 
+
+center grid 
+
+need snake https://codepen.io/jackrugile/pen/IHbvh 
+
+need food just a different color maybe can do that after maybe 
+
+
+
+Javascript: 
+const 
+food
+the grid 
+A score display
+
+
+1) snake to move
+Create the grid using javascript method. 
+Grab the element, and create the grid.  
+
+create a starting point for snake. 
+
+create a current position for snake. 
+
+Create up and down left and right and link up to snake 
+
+create if statements for going off end of grid.
+
+
+
+
+-- snake will have to rotate to it's direction. 
+
+https://genekogan.com/code/p5js-transformations/ 
+
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate 
+
+
+2) Food to move on page 
+
+3) Snake to eat food 
+
+4) Snake to grow bigger 
+
+5) snake to go faster when eat food. 
+
+5) Snake to hit self lead to -- Game over 
+
+6) Snake hit walls lead to -- Game over 
+
+7) Game over 
+
+8) restart game. 
+
+
+
+post finish CSS: 
+
+Features to add later: 
+MAybe enter game to start. 
