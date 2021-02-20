@@ -9,18 +9,23 @@ function init () {
 
   //Snake// 
   const snakeClass = 'snake'
-  const snakeStartPosition = 1
+  const snakeStartPosition = 0
   let snakeCurrentPosition = 0 
 
   //*food*// 
   const foodClass = 'food'
-  const foodStartPosition = 42
-  let foodCurrentPosition = 0
+  const foodStartPosition = 5
+  let foodCurrentPosition = Math.floor(Math.random() * Number(100))
 
   function addFood (position) { 
     cells[position].classList.add(foodClass)
+    console.log(foodCurrentPosition)
   }
-console.log(foodClass)
+
+  function removeFood(position) { 
+    cells[position].classList.remove(foodClass)
+  }
+
 
   //making grid work// 
   function createGrid (snakeStartPosition) { 
@@ -42,6 +47,8 @@ console.log(foodClass)
     cells[position].classList.remove(snakeClass)
   }
 
+
+  //*keys*// 
   function handleKeyUp(event) { 
     const key = event.keyCode
     removeSnake(snakeCurrentPosition)
@@ -57,8 +64,22 @@ console.log(foodClass)
       console.log('invalid key')
     }
     addSnake(snakeCurrentPosition)
+
+    if (snakeCurrentPosition === foodStartPosition) { 
+      console.log('hi')
+      addFood(foodCurrentPosition)
+    }
   }
 
+  function moveFood() { 
+    if (snakeClass === foodClass){
+      console.log('hey')
+      removeFood(foodStartPosition)
+
+    }
+    
+  }
+  moveFood()
 
 
   
