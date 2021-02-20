@@ -38,3 +38,8 @@ body {
     background-color: #fd6401;
     box-shadow: 0  0  5px  #fd6401;
 }
+
+.grid div.food {
+  background-color: #01fd87;
+  box-shadow: 0  0  5px  #09fd01;
+}

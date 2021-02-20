@@ -47,6 +47,11 @@ https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate
 
 
 2) Food to move on page 
+add the food
+add a start position math.random 
+add a current position 
+add an if statement for when snake ets food 
+
 
 3) Snake to eat food 
 
@@ -68,3 +73,4 @@ post finish CSS:
 
 Features to add later: 
 MAybe enter game to start. 
+add interval to food so randomly moving at times. 

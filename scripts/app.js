@@ -9,9 +9,20 @@ function init () {
 
   //Snake// 
   const snakeClass = 'snake'
-  const snakeStartPosition = 0 
+  const snakeStartPosition = 1
   let snakeCurrentPosition = 0 
 
+  //*food*// 
+  const foodClass = 'food'
+  const foodStartPosition = 42
+  let foodCurrentPosition = 0
+
+  function addFood (position) { 
+    cells[position].classList.add(foodClass)
+  }
+console.log(foodClass)
+
+  //making grid work// 
   function createGrid (snakeStartPosition) { 
     for (let i = 0; i < cellCount; i++) { 
       const cell = document.createElement('div')
@@ -20,6 +31,7 @@ function init () {
       cells.push(cell)
     }
     addSnake(snakeStartPosition)
+    addFood(foodStartPosition)
   }
 
   function addSnake(position) { 
@@ -47,6 +59,12 @@ function init () {
     addSnake(snakeCurrentPosition)
   }
 
+
+
+  
+  
+
+  //*eventlisteners*// 
   document.addEventListener('keydown', handleKeyUp)
 
 
