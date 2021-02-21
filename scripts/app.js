@@ -10,16 +10,17 @@ function init () {
   //Snake// 
   const snakeClass = 'snake'
   const snakeStartPosition = 0
-  let snakeCurrentPosition = 0 
+  let snakeCurrentPosition = 0
+  //multiple divs 
+  let snakeTail = []
 
   //*food*// 
   const foodClass = 'food'
   const foodStartPosition = 5
-  let foodCurrentPosition = 45
+  let foodCurrentPosition = Math.floor(Math.random() * Number(100))
 
   function addFood (position) { 
     cells[position].classList.add(foodClass)
-    console.log(foodCurrentPosition)
   }
 
   function removeFood(position) { 
@@ -43,12 +44,12 @@ function init () {
     addFood(foodStartPosition)
   }
 
-  function addSnake(position) { 
-    cells[position].classList.add(snakeClass)
+  function addSnake(position) {  
+    cells[position].classList.add(snakeClass) 
   }
 
   function removeSnake(position) { 
-    cells[position].classList.remove(snakeClass)
+    cells[position].classList.remove(snakeClass) 
   }
 
 
@@ -71,17 +72,24 @@ function init () {
 
     //food being eaten// 
     if (snakeCurrentPosition === foodStartPosition) { 
-      console.log('hi')
       addFood(foodCurrentPosition)
       removeFood(foodStartPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
     } else if (snakeCurrentPosition === foodCurrentPosition) { 
-      console.log('yes me')
       removeFood(foodCurrentPosition)
       addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
+      addSnake(snakeCurrentPosition += 1 )
       currentScore += 10 
       score.innerText = `${currentScore}`
+      
+    }
+
+    //snake growing// 
+    if (snakeCurrentPosition === foodStartPosition && key === 39) {
+      addSnake(SnakeTail = snakeCurrentPosition += 1)
+    } else { 
+      console.log(snakeCurrentPosition)
     }
   }
 
