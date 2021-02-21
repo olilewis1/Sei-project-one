@@ -26,6 +26,10 @@ function init () {
     cells[position].classList.remove(foodClass)
   }
 
+  //*current score// 
+  let currentScore = 0 
+  const score = document.querySelector('#current-score')
+
 
   //making grid work// 
   function createGrid (snakeStartPosition) { 
@@ -70,10 +74,14 @@ function init () {
       console.log('hi')
       addFood(foodCurrentPosition)
       removeFood(foodStartPosition)
+      currentScore += 10 
+      score.innerText = `${currentScore}`
     } else if (snakeCurrentPosition === foodCurrentPosition) { 
       console.log('yes me')
       removeFood(foodCurrentPosition)
       addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
+      currentScore += 10 
+      score.innerText = `${currentScore}`
     }
   }
 

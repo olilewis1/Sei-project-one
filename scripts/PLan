@@ -53,7 +53,6 @@ add a current position
 add an if statement for when snake ets food 
 
 
-3) Snake to eat food 
 
 4) Snake to grow bigger 
 
@@ -74,3 +73,8 @@ post finish CSS:
 Features to add later: 
 MAybe enter game to start. 
 add interval to food so randomly moving at times. 
+
+
+things to debug: 
+
+if statement for food being eaten can be shortened 
