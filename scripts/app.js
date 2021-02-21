@@ -27,6 +27,7 @@ function init () {
     cells[position].classList.remove(foodClass)
   }
 
+
   //*current score// 
   let currentScore = 0 
   const score = document.querySelector('#current-score')
@@ -50,6 +51,13 @@ function init () {
 
   function removeSnake(position) { 
     cells[position].classList.remove(snakeClass) 
+  }
+  let x = 0
+  function addSnakeMultiple (position) { 
+    for (i = 0; i < snakeClass.length; i++) {
+      snakeClass[i].classname += snakeTail[i];  //This is where I do not know how to add the elements in order
+      x++ //This will get to the end of the array, how do I loop back to the beginning of the array after hitting the last element?
+    }
   }
 
 
@@ -76,19 +84,22 @@ function init () {
       removeFood(foodStartPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
+      snakeTail.push(snakeCurrentPosition)
     } else if (snakeCurrentPosition === foodCurrentPosition) { 
       removeFood(foodCurrentPosition)
       addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
-      addSnake(snakeCurrentPosition += 1 )
+      snakeTail.push(snakeCurrentPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
-      
+      addSnakeMultiple(snakeTail)
+    } else { 
+      console.log(snakeTail)
     }
 
     //snake growing// 
     if (snakeCurrentPosition === foodStartPosition && key === 39) {
       addSnake(SnakeTail = snakeCurrentPosition += 1)
-    } else { 
+    } else { //when you put in this loop, wasn't matching// 
       console.log(snakeCurrentPosition)
     }
   }
