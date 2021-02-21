@@ -15,7 +15,7 @@ function init () {
   //*food*// 
   const foodClass = 'food'
   const foodStartPosition = 5
-  let foodCurrentPosition = Math.floor(Math.random() * Number(100))
+  let foodCurrentPosition = 45
 
   function addFood (position) { 
     cells[position].classList.add(foodClass)
@@ -65,21 +65,18 @@ function init () {
     }
     addSnake(snakeCurrentPosition)
 
+    //food being eaten// 
     if (snakeCurrentPosition === foodStartPosition) { 
       console.log('hi')
       addFood(foodCurrentPosition)
-    }
-  }
-
-  function moveFood() { 
-    if (snakeClass === foodClass){
-      console.log('hey')
       removeFood(foodStartPosition)
-
+    } else if (snakeCurrentPosition === foodCurrentPosition) { 
+      console.log('yes me')
+      removeFood(foodCurrentPosition)
+      addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
     }
-    
   }
-  moveFood()
+
 
 
   
