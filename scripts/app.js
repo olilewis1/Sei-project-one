@@ -129,11 +129,20 @@ function init () {
     console.log(snakeCurrentLengthTail) // current length where tail is of array in index 
     console.log(snakeCurrentArray.indexOf(snakeTail)) 
     let snakeIndexOfTail = snakeCurrentArray.indexOf(snakeTail) 
-    // console.log(snakeCurrentLengthTail[snakeIndexOfTail])
+    console.log(snakeCurrentLengthTail[snakeIndexOfTail])
     
     let addToTail = snakeCurrentArray[snakeCurrentLengthTail - 1]
     snakeTail.push(addToTail)
     console.log(snakeTail)
+    console.log(snakeTail.lastIndexOf(addToTail)) 
+    console.log(snakeTail[snakeTail.length - 1])
+    snakeTail.push(snakeCurrentArray[2])
+    console.log(snakeTail)
+    console.log(snakeTail[snakeTail.length - 1])
+
+    
+
+
     
   
 
