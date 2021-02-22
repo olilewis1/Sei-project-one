@@ -9,7 +9,7 @@ function init () {
 
   //Snake// 
   const snakeClass = 'snake'
-  const snakeStartPosition = 5
+  const snakeStartPosition = [3, 4, 5]
   let snakeCurrentPosition = [5]
   //multiple divs 
   const SnakeTailClass = 'snake'
@@ -43,7 +43,10 @@ function init () {
       grid.appendChild(cell)
       cells.push(cell)
     }
-    addSnake(snakeStartPosition)
+    snakeStartPosition.forEach(element => {
+      addSnake(element)
+    })
+    // addSnake(snakeStartPosition)
     addFood(foodStartPosition)
   }
 
@@ -80,31 +83,36 @@ function init () {
       removeFood(foodStartPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
-      // snakeTail.push(snakeCurrentPosition)
-      // snakeTail.forEach((element)=> { 
-      //   addSnake(element -= 1)
-      // })
+      
+      
     } else if (snakeCurrentPosition === foodCurrentPosition) { 
       removeFood(foodCurrentPosition)
       addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
+      snakeTail = snakeCurrentArray[snakeCurrentArray.length --]
+      console.log(snakeTail)
       // snakeCurrentPosition = snakeTail.push(snakeCurrentPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
+
+      console.log(snakeTail)
       // snakeTail.forEach((element)=> { 
       //   addSnake(element -= 1)
       // })
     } else { 
       console.log('hey')
     }
+
+
+    //Adding snake to end of snake
     snakeCurrentArray.push(snakeCurrentPosition)
-    console.log(snakeCurrentArray)
-    
     snakeTail = snakeCurrentArray[snakeCurrentArray.length - 2]
-    
     addSnake(snakeTail)
-    removeSnake(snakeCurrentArray[snakeCurrentArray.length - 3])
+    snakeTail = snakeCurrentArray[snakeCurrentArray.length - 3]
+    addSnake(snakeTail)
+    removeSnake(snakeCurrentArray[snakeCurrentArray.length - 4])
     
-    
+    console.log(snakeTail)
+    console.log('snakecurrentarray', snakeCurrentArray)
     
 
     
