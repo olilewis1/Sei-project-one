@@ -35,6 +35,9 @@ function init () {
   const score = document.querySelector('#current-score')
 
 
+
+
+
   //making grid work// 
   function createGrid (snakeStartPosition) { 
     for (let i = 0; i < cellCount; i++) { 
@@ -107,7 +110,7 @@ function init () {
     snakeCurrentArray.push(snakeCurrentPosition)
     snakeTail = snakeCurrentArray[snakeCurrentArray.length - 2]
     addSnake(snakeTail)
-    snakeTail = snakeCurrentArray[snakeCurrentArray.length - 3]
+    snakeTail = [snakeCurrentArray[snakeCurrentArray.length - 3]]
     addSnake(snakeTail)
     let snakeAddTail 
     snakeAddTail = snakeCurrentArray[snakeCurrentArray.length - 4]
@@ -116,8 +119,23 @@ function init () {
     console.log('snake tail', snakeTail)
     console.log('snakecurrentarray', snakeCurrentArray)
 
+
     
     
+
+    
+    let snakeCurrentLength = snakeCurrentArray.length
+    let snakeCurrentLengthTail = snakeCurrentArray.length - 3
+    console.log(snakeCurrentLengthTail) // current length where tail is of array in index 
+    console.log(snakeCurrentArray.indexOf(snakeTail)) 
+    let snakeIndexOfTail = snakeCurrentArray.indexOf(snakeTail) 
+    // console.log(snakeCurrentLengthTail[snakeIndexOfTail])
+    
+    let addToTail = snakeCurrentArray[snakeCurrentLengthTail - 1]
+    snakeTail.push(addToTail)
+    console.log(snakeTail)
+    
+  
 
     
 
