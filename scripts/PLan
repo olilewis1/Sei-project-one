@@ -101,3 +101,5 @@ push in to tail array
 track length of tail
 track length of current array 
 add the number index 
+
+look at length of tail, look for that number in current array, nd push back the index of onbe less. 

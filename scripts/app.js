@@ -135,10 +135,17 @@ function init () {
     snakeTail.push(addToTail)
     console.log(snakeTail)
     console.log(snakeTail.lastIndexOf(addToTail)) 
-    console.log(snakeTail[snakeTail.length - 1])
-    snakeTail.push(snakeCurrentArray[2])
+    const snakeCurrentNewTail = snakeTail[snakeTail.length - 1]
+    console.log(snakeCurrentNewTail)
+    const SnakeNewCurrent = snakeCurrentArray.lastIndexOf(snakeCurrentNewTail)
+    console.log(SnakeNewCurrent)
+
+    const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
+    snakeTail.push(snakeTailPush)
     console.log(snakeTail)
-    console.log(snakeTail[snakeTail.length - 1])
+
+    
+    
 
     
 
