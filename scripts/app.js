@@ -96,21 +96,15 @@ function init () {
     } else { 
       console.log('hey')
     }
-
-    //adding snake tail
-
-    console.log('snake', snakeCurrentPosition)
-    
     snakeCurrentArray.push(snakeCurrentPosition)
     console.log(snakeCurrentArray)
-    snakeTail = snakeCurrentArray[snakeCurrentArray.length - 2]
-    console.log('yes', snakeCurrentArray[snakeCurrentArray.length - 2] )
     
-    console.log('snake tail', snakeTail)
-
+    snakeTail = snakeCurrentArray[snakeCurrentArray.length - 2]
+    
     addSnake(snakeTail)
-    console.log('started follow', snakeTail)
-    removeSnake(snakeTail)
+    removeSnake(snakeCurrentArray[snakeCurrentArray.length - 3])
+    
+    
     
 
     
