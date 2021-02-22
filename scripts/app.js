@@ -76,7 +76,6 @@ function init () {
     }
     addSnake(snakeCurrentPosition)
 
-
     //food being eaten// 
     if (snakeCurrentPosition === foodStartPosition) { 
       addFood(foodCurrentPosition)
@@ -88,11 +87,12 @@ function init () {
     } else if (snakeCurrentPosition === foodCurrentPosition) { 
       removeFood(foodCurrentPosition)
       addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
-      snakeTail = snakeCurrentArray[snakeCurrentArray.length --]
+      // snakeTail = snakeCurrentArray[snakeCurrentArray.length - 5]
       console.log(snakeTail)
       // snakeCurrentPosition = snakeTail.push(snakeCurrentPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
+
 
       console.log(snakeTail)
       // snakeTail.forEach((element)=> { 
@@ -109,10 +109,16 @@ function init () {
     addSnake(snakeTail)
     snakeTail = snakeCurrentArray[snakeCurrentArray.length - 3]
     addSnake(snakeTail)
-    removeSnake(snakeCurrentArray[snakeCurrentArray.length - 4])
+    let snakeAddTail 
+    snakeAddTail = snakeCurrentArray[snakeCurrentArray.length - 4]
+    removeSnake(snakeAddTail)
     
-    console.log(snakeTail)
+    console.log('snake tail', snakeTail)
     console.log('snakecurrentarray', snakeCurrentArray)
+
+    
+    
+
     
 
     

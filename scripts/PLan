@@ -9,6 +9,7 @@ havbe div for outside, and then div for box inside.
 
 CSS: to make the game look right 
 
+
 center grid 
 
 need snake https://codepen.io/jackrugile/pen/IHbvh 
@@ -52,11 +53,24 @@ add a start position math.random
 add a current position 
 add an if statement for when snake ets food 
 
+3) add curent score 
+
 
 
 4) Snake to grow bigger 
 
-5) snake to go faster when eat food. 
+grab other divs 
+if right key 
+
+snake current position will add current position each time and begin a big array 
+snake tail will look at last index of arry -1 and add to there. need to push extra elements to it. 
+
+might need to be sperate array and stored there. 
+
+snake tail is 3 back, re assing to - 1 more
+
+5) snake to be moving one way continuously
+snake to go faster when eat food. 
 
 5) Snake to hit self lead to -- Game over 
 
@@ -78,3 +92,12 @@ add interval to food so randomly moving at times.
 things to debug: 
 
 if statement for food being eaten can be shortened 
+
+things to sort out: 
+how to go faster
+how to add to classlist make snake longer
+
+push in to tail array 
+track length of tail
+track length of current array 
+add the number index 
