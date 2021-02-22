@@ -9,14 +9,16 @@ function init () {
 
   //Snake// 
   const snakeClass = 'snake'
-  const snakeStartPosition = 0
-  let snakeCurrentPosition = 0
+  const snakeStartPosition = 5
+  let snakeCurrentPosition = [5]
   //multiple divs 
+  const SnakeTailClass = 'snake'
+  
+  let snakeCurrentArray = [3, 4, 5]
   let snakeTail = []
-
   //*food*// 
   const foodClass = 'food'
-  const foodStartPosition = 5
+  const foodStartPosition = 15
   let foodCurrentPosition = Math.floor(Math.random() * Number(100))
 
   function addFood (position) { 
@@ -52,13 +54,6 @@ function init () {
   function removeSnake(position) { 
     cells[position].classList.remove(snakeClass) 
   }
-  let x = 0
-  function addSnakeMultiple (position) { 
-    for (i = 0; i < snakeClass.length; i++) {
-      snakeClass[i].classname += snakeTail[i];  //This is where I do not know how to add the elements in order
-      x++ //This will get to the end of the array, how do I loop back to the beginning of the array after hitting the last element?
-    }
-  }
 
 
   //*keys*// 
@@ -78,31 +73,58 @@ function init () {
     }
     addSnake(snakeCurrentPosition)
 
+
     //food being eaten// 
     if (snakeCurrentPosition === foodStartPosition) { 
       addFood(foodCurrentPosition)
       removeFood(foodStartPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
-      snakeTail.push(snakeCurrentPosition)
+      // snakeTail.push(snakeCurrentPosition)
+      // snakeTail.forEach((element)=> { 
+      //   addSnake(element -= 1)
+      // })
     } else if (snakeCurrentPosition === foodCurrentPosition) { 
       removeFood(foodCurrentPosition)
       addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
-      snakeTail.push(snakeCurrentPosition)
+      // snakeCurrentPosition = snakeTail.push(snakeCurrentPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
-      addSnakeMultiple(snakeTail)
+      // snakeTail.forEach((element)=> { 
+      //   addSnake(element -= 1)
+      // })
     } else { 
-      console.log(snakeTail)
+      console.log('hey')
     }
 
+    //adding snake tail
+
+    console.log('snake', snakeCurrentPosition)
+    
+    snakeCurrentArray.push(snakeCurrentPosition)
+    console.log(snakeCurrentArray)
+    snakeTail = snakeCurrentArray[snakeCurrentArray.length - 2]
+    console.log('yes', snakeCurrentArray[snakeCurrentArray.length - 2] )
+    
+    console.log('snake tail', snakeTail)
+
+    addSnake(snakeTail)
+    console.log('started follow', snakeTail)
+    removeSnake(snakeTail)
+    
+
+    
+    
+  
+
     //snake growing// 
-    if (snakeCurrentPosition === foodStartPosition && key === 39) {
-      addSnake(SnakeTail = snakeCurrentPosition += 1)
-    } else { //when you put in this loop, wasn't matching// 
-      console.log(snakeCurrentPosition)
-    }
-  }
+    //   if (snakeCurrentPosition === foodStartPosition && key === 39) {
+    //     addSnake(SnakeTail = snakeCurrentPosition += 1)
+    //   } else  { 
+    //     console.log('hello')
+    //   }
+    
+  } 
 
 
 
