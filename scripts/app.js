@@ -13,7 +13,6 @@ function init () {
   let snakeCurrentPosition = [5]
   //multiple divs 
   const SnakeTailClass = 'snake'
-  
   let snakeCurrentArray = [3, 4, 5]
   let snakeTail = []
   //*food*// 
@@ -21,12 +20,18 @@ function init () {
   const foodStartPosition = 15
   let foodCurrentPosition = Math.floor(Math.random() * Number(100))
 
+  //*functions 
+
   function addFood (position) { 
     cells[position].classList.add(foodClass)
   }
 
   function removeFood(position) { 
     cells[position].classList.remove(foodClass)
+  }
+
+  function speedUp() { 
+    
   }
 
 
@@ -119,53 +124,41 @@ function init () {
     console.log('snake tail', snakeTail)
     console.log('snakecurrentarray', snakeCurrentArray)
 
-
-    
-    
-
-    
-    let snakeCurrentLength = snakeCurrentArray.length
-    let snakeCurrentLengthTail = snakeCurrentArray.length - 3
-    console.log(snakeCurrentLengthTail) // current length where tail is of array in index 
-    console.log(snakeCurrentArray.indexOf(snakeTail)) 
-    let snakeIndexOfTail = snakeCurrentArray.indexOf(snakeTail) 
-    console.log(snakeCurrentLengthTail[snakeIndexOfTail])
-    
-    let addToTail = snakeCurrentArray[snakeCurrentLengthTail - 1]
-    snakeTail.push(addToTail)
-    console.log(snakeTail)
-    console.log(snakeTail.lastIndexOf(addToTail)) 
+    // *add snake end 
+    // snaketail last number in array found 
     const snakeCurrentNewTail = snakeTail[snakeTail.length - 1]
-    console.log(snakeCurrentNewTail)
+    // find last occurence of that in main array 
     const SnakeNewCurrent = snakeCurrentArray.lastIndexOf(snakeCurrentNewTail)
-    console.log(SnakeNewCurrent)
-
+    //find 1 less of that in the array 
     const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
+    //add it to the end of snake 
     snakeTail.push(snakeTailPush)
     console.log(snakeTail)
+    // snakeTail.forEach(element => {
+    //   addSnake(element)
+    // })
 
     
-    
+    console.log(snakeCurrentPosition)
+    console.log(snakeTail)
 
-    
+    //*GameOver how do I get it to match up to mutiple. 
+    if (snakeCurrentPosition === snakeTail[0]) { 
+      console.log('gameover')
+    } else if (snakeTail[0] === snakeTail[1]) { 
+      console.log('gqmeover')
+    }
 
-
+    //*Game over at walls
     
   
 
-    
+
 
     
     
   
 
-    //snake growing// 
-    //   if (snakeCurrentPosition === foodStartPosition && key === 39) {
-    //     addSnake(SnakeTail = snakeCurrentPosition += 1)
-    //   } else  { 
-    //     console.log('hello')
-    //   }
-    
   } 
 
 
