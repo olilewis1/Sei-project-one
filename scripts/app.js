@@ -1,206 +1,135 @@
-function init () { 
-
-  //*grid*// 
-  const grid = document.querySelector('.grid') 
-  
-  const width = 10 
-  const cellCount = width * width 
+function init () {
+  //*grid*//
+  const grid = document.querySelector('.grid')
+  const width = 10
+  const cellCount = width * width
   const cells = []
-
-  //Snake// 
+  //Snake//
   const snakeClass = 'snake'
+  //multiple divs
+  // const SnakeTailClass = 'snake'
   const snakeStartPosition = [3, 4, 5]
-  let snakeCurrentPosition = [5]
-  //multiple divs 
-  const SnakeTailClass = 'snake'
-  let snakeCurrentArray = [3, 4, 5]
-  let snakeTail = []
-  //*food*// 
+  const snakeCurrentPosition = [3, 4, 5]
+  const snakeTail = []
+  let snakeDirection
+  //*food*//
   const foodClass = 'food'
-  const foodStartPosition = 15
-  let foodCurrentPosition = Math.floor(Math.random() * Number(100))
-
-  //*functions 
-
-  function addFood (position) { 
+  //*functions
+  function createRandomFood() {
+    const foodCurrentPosition = Math.floor(Math.random() * Number(100))
+    addFood(foodCurrentPosition)
+  }
+  function addFood (position) {
     cells[position].classList.add(foodClass)
   }
-
-  function removeFood(position) { 
+  function removeFood(position) {
     cells[position].classList.remove(foodClass)
   }
-
-  function speedUp() { 
-    
-  }
-
-
-  //*current score// 
-  let currentScore = 0 
+  //*current score//
+  let currentScore = 0
   const score = document.querySelector('#current-score')
-
-
-  //making grid work// 
-  function createGrid (snakeStartPosition) { 
-    for (let i = 0; i < cellCount; i++) { 
+  //*making grid work//
+  function createGrid () {
+    for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.textContent = i  
+      cell.textContent = i
       grid.appendChild(cell)
       cells.push(cell)
     }
-    snakeStartPosition.forEach(element => {
-      addSnake(element)
+    addSnake()
+    createRandomFood()
+  }
+  function addSnake() {
+    snakeCurrentPosition.forEach(position => {
+      cells[position].classList.add(snakeClass)
     })
-    // addSnake(snakeStartPosition)
-    addFood(foodStartPosition)
   }
-
-  function addSnake(position) {  
-    cells[position].classList.add(snakeClass) 
+  function removeSnake() {
+    snakeCurrentPosition.forEach(position => {
+      cells[position].classList.remove(foodClass)
+    })
   }
-
-  function removeSnake(position) { 
-    cells[position].classList.remove(snakeClass) 
-  }
-
-
-  //*keys*// 
-  function handleKeyUp(event) { 
+  //*keys*//
+  function handleKeyUp(event) {
     const key = event.keyCode
     removeSnake(snakeCurrentPosition)
-    if (key === 39 && snakeCurrentPosition % width !== width - 1 ) { 
-      snakeCurrentPosition++ 
-    } else if (key === 37 && snakeCurrentPosition % width !== 0) { 
-      snakeCurrentPosition--
-    } else if (key === 38 && snakeCurrentPosition >= width) { 
-      snakeCurrentPosition -= width
-    } else if (key === 40 && snakeCurrentPosition + width <= width * width - 1) { 
-      snakeCurrentPosition += width
-    } else { 
+    if (key === 39 && snakeCurrentPosition[0] % width !== width - 1 ) {
+      snakeDirection = 'right'
+      moveSnake()
+      console.log(snakeCurrentPosition)
+    } else if (key === 37 && snakeCurrentPosition[0] % width !== 0) {
+      // snakeCurrentPosition--
+      snakeDirection = 'left'
+      moveSnake()
+    } else if (key === 38 && snakeCurrentPosition[0] >= width) {
+      // snakeCurrentPosition -= width
+      snakeDirection = 'up'
+      moveSnake()
+    } else if (key === 40 && snakeCurrentPosition[0] + width <= width * width - 1 ) {
+      // snakeCurrentPosition += width
+      snakeDirection = 'down'
+      moveSnake()
+    } else {
       console.log('invalid key')
     }
     addSnake(snakeCurrentPosition)
-
-    //food being eaten// 
-    if (snakeCurrentPosition === foodStartPosition) { 
-      addFood(foodCurrentPosition)
-      removeFood(foodStartPosition)
-      currentScore += 10 
+  }
+  //*food being eaten//
+  function checkFoodBeingEaten() {
+    const foodCheck = cells[snakeCurrentPosition[0]].classList.contains(foodClass)
+    if (foodCheck) {
+      removeFood()
+      currentScore += 10
       score.innerText = `${currentScore}`
-      snakeTail.forEach(element => {
-        addSnake(element)
-      }) 
-      
-    } else if (snakeCurrentPosition === foodCurrentPosition) { 
-      removeFood(foodCurrentPosition)
-      addFood(foodCurrentPosition = Math.floor(Math.random() * Number(100)))
-      // snakeTail = snakeCurrentArray[snakeCurrentArray.length - 5]
-      console.log(snakeTail)
-      // snakeCurrentPosition = snakeTail.push(snakeCurrentPosition)
-      currentScore += 10 
-      score.innerText = `${currentScore}`
-      console.log(snakeTail)
-      const snakeCurrentNewTail = snakeTail[snakeTail.length - 1]
-      // find last occurence of that in main array 
-      const SnakeNewCurrent = snakeCurrentArray.lastIndexOf(snakeCurrentNewTail)
-      //find 1 less of that in the array 
-      const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
-      //add it to the end of snake 
-      snakeTail.push(snakeTailPush) 
-    
-      snakeTail.forEach(element => {
-        addSnake(element)
-      }) 
-
-
-    } else { 
-      console.log('hey')
-      snakeTail.forEach(element => {
-        removeSnake(element)
-      })
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
+      addSnake()
+    } else {
+      removeSnake()
     }
-
-
-    //Adding snake to end of snake
-    let snakeTailNew 
-    snakeCurrentArray.push(snakeCurrentPosition)
-    snakeTailNew = snakeCurrentArray[snakeCurrentArray.length - 2]
-    addSnake(snakeTailNew)
-    snakeTailNew = [snakeCurrentArray[snakeCurrentArray.length - 3]]
-    addSnake(snakeTailNew)
-    let snakeAddTail 
-    // snakeAddTail = snakeCurrentArray[snakeCurrentArray.length - 4]
-    // removeSnake(snakeAddTail)
-
-    
-
-    // // *add snake end 
-    // // snaketail last number in array found 
-    // const snakeCurrentNewTail = snakeTail[snakeTail.length - 1]
-    // // find last occurence of that in main array 
-    // const SnakeNewCurrent = snakeCurrentArray.lastIndexOf(snakeCurrentNewTail)
-    // //find 1 less of that in the array 
-    // const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
-    // //add it to the end of snake 
-    // snakeTail.push(snakeTailPush) 
-  
-    // snakeTail.forEach(element => {
-    //   addSnake(element)
-    // }) 
-
-    //*GameOver how do I get it to match up to mutiple. 
-    if (snakeCurrentPosition === snakeTail[0]) { 
-      console.log('gameover')
-    } else if (snakeTail[0] === snakeTail[1]) { 
-      console.log('gqmeover')
+  }
+  function moveSnake() {
+    checkFoodBeingEaten()
+    if (snakeDirection === 'right') {
+      removeSnake()
+      // remove snake needs to be looked at
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
+      snakeCurrentPosition.pop()
+      addSnake()
+    } else if (snakeDirection === 'left') { 
+      removeSnake()
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
+      addSnake()
+    } else if (snakeDirection === 'up') { 
+      removeSnake()
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 10)
+      addSnake()
+    } else if (snakeDirection === 'down') { 
+      removeSnake()
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 10)
+      addSnake()
     }
-
-    //*Game over at walls
-    
-  
-
-
-
-    
-    
-  
-
-  } 
-
-
-
-  
-  
-
-  //*eventlisteners*// 
+    // move in all directions
+  }
+  //*GameOver how do I get it to match up to mutiple.
+  if (snakeCurrentPosition === snakeTail[0]) {
+    console.log('gameover')
+  } else if (snakeTail[0] === snakeTail[1]) {
+    console.log('gqmeover')
+  }
+  //*Game over at walls
+  //*eventlisteners*//
   document.addEventListener('keydown', handleKeyUp)
-
-
   createGrid(snakeStartPosition)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
 window.addEventListener('DOMContentLoaded', init)
+// next steps
+// get snake moving right left up and down
+// check our remove snake function - console.log your way through it
+// make sure its being called in the right places
+// use console.log to figure out why our food check is always true
+// get it moving on a timer
+
+
+// && snakeCurrentPosition >= width   code for snake current position up 
+
+// && snakeCurrentPosition + width <= width * width - 1  down 

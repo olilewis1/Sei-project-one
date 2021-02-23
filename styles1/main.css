@@ -50,7 +50,6 @@ body {
 
 .grid div.snake {
     background-color: #8bac0f;
-    box-shadow: 0  0  5px  ##8bac0f;
-
+    box-shadow: 0  0  5px #8bac0f;
 }
 
