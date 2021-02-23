@@ -100,6 +100,7 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
       snakeCurrentPosition.pop()
       addSnake() 
+      gameOver()
     } else if (snakeDirection === 'left') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
@@ -120,6 +121,13 @@ function init () {
     // move in all directions
   }
   
+
+  function gameOver() { 
+    const gameOverCheck =  cells[snakeCurrentPosition[0]].classList.contains(snakeClass)
+    if (gameOverCheck) { 
+      console.log('hello')
+    }
+  }
   function stopMyInterval() { 
     clearInterval(intervalSet)
   }
@@ -128,16 +136,10 @@ function init () {
   // function startMyInterval() { 
   const intervalSet = setInterval(() => {
     moveSnake()
+    console.log(snakeCurrentPosition)
   }, 1000)
   // }
 
-  //*GameOver how do I get it to match up to mutiple. will be  function. 
-  if (snakeCurrentPosition === snakeTail[0]) {
-    console.log('gameover')
-  } else if (snakeTail[0] === snakeTail[1]) {
-    console.log('gqmeover')
-  }
-  //*Game over at walls
   //*eventlisteners*//
   document.addEventListener('keydown', handleKeyUp)
   createGrid(snakeCurrentPosition)
