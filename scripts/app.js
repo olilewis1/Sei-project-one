@@ -23,7 +23,9 @@ function init () {
     cells[position].classList.add(foodClass)
   }
   function removeFood(position) {
-    cells[position].classList.remove(foodClass)
+    snakeCurrentPosition.forEach(position => {
+      cells[position].classList.remove(foodClass)
+    })
   }
   //*current score//
   let currentScore = 0
@@ -56,7 +58,6 @@ function init () {
     if (key === 39 && snakeCurrentPosition[0] % width !== width - 1 ) {
       snakeDirection = 'right'
       moveSnake()
-      console.log(snakeCurrentPosition)
     } else if (key === 37 && snakeCurrentPosition[0] % width !== 0) {
       // snakeCurrentPosition--
       snakeDirection = 'left'
@@ -79,9 +80,11 @@ function init () {
     const foodCheck = cells[snakeCurrentPosition[0]].classList.contains(foodClass)
     if (foodCheck) {
       removeFood()
+      createRandomFood()
       currentScore += 10
       score.innerText = `${currentScore}`
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
+      console.log('I am true')
       addSnake()
     } else {
       removeSnake()
