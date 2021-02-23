@@ -100,6 +100,17 @@ function init () {
       currentScore += 10 
       score.innerText = `${currentScore}`
       console.log(snakeTail)
+      const snakeCurrentNewTail = snakeTail[snakeTail.length - 1]
+      // find last occurence of that in main array 
+      const SnakeNewCurrent = snakeCurrentArray.lastIndexOf(snakeCurrentNewTail)
+      //find 1 less of that in the array 
+      const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
+      //add it to the end of snake 
+      snakeTail.push(snakeTailPush) 
+    
+      snakeTail.forEach(element => {
+        addSnake(element)
+      }) 
 
 
     } else { 
@@ -111,35 +122,32 @@ function init () {
 
 
     //Adding snake to end of snake
+    let snakeTailNew 
     snakeCurrentArray.push(snakeCurrentPosition)
-    snakeTail = snakeCurrentArray[snakeCurrentArray.length - 2]
-    addSnake(snakeTail)
-    snakeTail = [snakeCurrentArray[snakeCurrentArray.length - 3]]
-    addSnake(snakeTail)
+    snakeTailNew = snakeCurrentArray[snakeCurrentArray.length - 2]
+    addSnake(snakeTailNew)
+    snakeTailNew = [snakeCurrentArray[snakeCurrentArray.length - 3]]
+    addSnake(snakeTailNew)
     let snakeAddTail 
-    snakeAddTail = snakeCurrentArray[snakeCurrentArray.length - 4]
-    removeSnake(snakeAddTail)
+    // snakeAddTail = snakeCurrentArray[snakeCurrentArray.length - 4]
+    // removeSnake(snakeAddTail)
 
     
 
-    // *add snake end 
-    // snaketail last number in array found 
-    const snakeCurrentNewTail = snakeTail[snakeTail.length - 1]
-    // find last occurence of that in main array 
-    const SnakeNewCurrent = snakeCurrentArray.lastIndexOf(snakeCurrentNewTail)
-    //find 1 less of that in the array 
-    const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
-    //add it to the end of snake 
-    snakeTail.push(snakeTailPush) 
-    let snakeTailArray = []
-    snakeTailArray.push(snakeTailPush)
-    snakeTail.forEach(element => {
-      addSnake(element)
-    }) 
-console.log(snakeCurrentArray)
+    // // *add snake end 
+    // // snaketail last number in array found 
+    // const snakeCurrentNewTail = snakeTail[snakeTail.length - 1]
+    // // find last occurence of that in main array 
+    // const SnakeNewCurrent = snakeCurrentArray.lastIndexOf(snakeCurrentNewTail)
+    // //find 1 less of that in the array 
+    // const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
+    // //add it to the end of snake 
+    // snakeTail.push(snakeTailPush) 
+  
+    // snakeTail.forEach(element => {
+    //   addSnake(element)
+    // }) 
 
-    
-console.log('sanke', snakeTail)
     //*GameOver how do I get it to match up to mutiple. 
     if (snakeCurrentPosition === snakeTail[0]) { 
       console.log('gameover')
