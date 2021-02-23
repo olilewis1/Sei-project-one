@@ -92,12 +92,14 @@ function init () {
   }
   function moveSnake() {
     checkFoodBeingEaten()
+    
     if (snakeDirection === 'right') {
-      removeSnake()
-      // remove snake needs to be looked at
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
-      snakeCurrentPosition.pop()
-      addSnake()
+      setInterval(()=> { removeSnake()
+        // remove snake needs to be looked at
+        snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
+        snakeCurrentPosition.pop()
+        addSnake() 
+      }, 1000)
     } else if (snakeDirection === 'left') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
@@ -113,8 +115,12 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 10)
       snakeCurrentPosition.pop()
       addSnake()
-    }
+    } 
+   
     // move in all directions
+    setTimeout(() => { 
+      clearInterval(timerId)
+    }, 5000)
   }
   //*GameOver how do I get it to match up to mutiple.
   if (snakeCurrentPosition === snakeTail[0]) {
