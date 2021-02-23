@@ -40,9 +40,6 @@ function init () {
   const score = document.querySelector('#current-score')
 
 
-
-
-
   //making grid work// 
   function createGrid (snakeStartPosition) { 
     for (let i = 0; i < cellCount; i++) { 
@@ -90,7 +87,9 @@ function init () {
       removeFood(foodStartPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
-      
+      snakeTail.forEach(element => {
+        addSnake(element)
+      }) 
       
     } else if (snakeCurrentPosition === foodCurrentPosition) { 
       removeFood(foodCurrentPosition)
@@ -100,14 +99,14 @@ function init () {
       // snakeCurrentPosition = snakeTail.push(snakeCurrentPosition)
       currentScore += 10 
       score.innerText = `${currentScore}`
-
-
       console.log(snakeTail)
-      // snakeTail.forEach((element)=> { 
-      //   addSnake(element -= 1)
-      // })
+
+
     } else { 
       console.log('hey')
+      snakeTail.forEach(element => {
+        removeSnake(element)
+      })
     }
 
 
@@ -120,9 +119,8 @@ function init () {
     let snakeAddTail 
     snakeAddTail = snakeCurrentArray[snakeCurrentArray.length - 4]
     removeSnake(snakeAddTail)
+
     
-    console.log('snake tail', snakeTail)
-    console.log('snakecurrentarray', snakeCurrentArray)
 
     // *add snake end 
     // snaketail last number in array found 
@@ -132,16 +130,16 @@ function init () {
     //find 1 less of that in the array 
     const snakeTailPush = snakeCurrentArray[SnakeNewCurrent - 1]
     //add it to the end of snake 
-    snakeTail.push(snakeTailPush)
-    console.log(snakeTail)
-    // snakeTail.forEach(element => {
-    //   addSnake(element)
-    // })
+    snakeTail.push(snakeTailPush) 
+    let snakeTailArray = []
+    snakeTailArray.push(snakeTailPush)
+    snakeTail.forEach(element => {
+      addSnake(element)
+    }) 
+console.log(snakeCurrentArray)
 
     
-    console.log(snakeCurrentPosition)
-    console.log(snakeTail)
-
+console.log('sanke', snakeTail)
     //*GameOver how do I get it to match up to mutiple. 
     if (snakeCurrentPosition === snakeTail[0]) { 
       console.log('gameover')
