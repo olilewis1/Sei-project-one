@@ -22,7 +22,7 @@ function init () {
   function addFood (position) {
     cells[position].classList.add(foodClass)
   }
-  function removeFood(position) {
+  function removeFood() {
     snakeCurrentPosition.forEach(position => {
       cells[position].classList.remove(foodClass)
     })
@@ -80,12 +80,12 @@ function init () {
     const foodCheck = cells[snakeCurrentPosition[0]].classList.contains(foodClass)
     if (foodCheck) {
       removeFood()
-      createRandomFood()
       currentScore += 10
       score.innerText = `${currentScore}`
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
-      console.log('I am true')
       addSnake()
+      createRandomFood()
+      console.log(snakeCurrentPosition)
     } else {
       removeSnake()
     }
@@ -125,7 +125,7 @@ function init () {
   //*Game over at walls
   //*eventlisteners*//
   document.addEventListener('keydown', handleKeyUp)
-  createGrid(snakeStartPosition)
+  createGrid(snakeCurrentPosition)
 }
 window.addEventListener('DOMContentLoaded', init)
 // next steps
