@@ -72,6 +72,7 @@ function init () {
       moveSnake()
     } else {
       console.log('invalid key')
+      stopMyInterval()
     }
     addSnake(snakeCurrentPosition)
   }
@@ -99,7 +100,6 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
       snakeCurrentPosition.pop()
       addSnake() 
-      
     } else if (snakeDirection === 'left') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
@@ -115,6 +115,7 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 10)
       snakeCurrentPosition.pop()
       addSnake()
+      
     } 
     // move in all directions
   }
@@ -124,12 +125,13 @@ function init () {
   }
 
   //*timer
+  // function startMyInterval() { 
   const intervalSet = setInterval(() => {
-    console.log(intervalSet)
+    moveSnake()
   }, 1000)
+  // }
 
-
-  //*GameOver how do I get it to match up to mutiple.
+  //*GameOver how do I get it to match up to mutiple. will be  function. 
   if (snakeCurrentPosition === snakeTail[0]) {
     console.log('gameover')
   } else if (snakeTail[0] === snakeTail[1]) {
