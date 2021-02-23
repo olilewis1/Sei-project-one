@@ -46,7 +46,7 @@ function init () {
   }
   function removeSnake() {
     snakeCurrentPosition.forEach(position => {
-      cells[position].classList.remove(foodClass)
+      cells[position].classList.remove(snakeClass)
     })
   }
   //*keys*//
@@ -98,14 +98,17 @@ function init () {
     } else if (snakeDirection === 'left') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
+      snakeCurrentPosition.pop()
       addSnake()
     } else if (snakeDirection === 'up') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 10)
+      snakeCurrentPosition.pop()
       addSnake()
     } else if (snakeDirection === 'down') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 10)
+      snakeCurrentPosition.pop()
       addSnake()
     }
     // move in all directions
@@ -128,8 +131,3 @@ window.addEventListener('DOMContentLoaded', init)
 // make sure its being called in the right places
 // use console.log to figure out why our food check is always true
 // get it moving on a timer
-
-
-// && snakeCurrentPosition >= width   code for snake current position up 
-
-// && snakeCurrentPosition + width <= width * width - 1  down 
