@@ -86,7 +86,7 @@ function init () {
       removeFood()
       currentScore += 10
       score.innerText = `${currentScore}`
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
+      snakeCurrentPosition.push(snakeCurrentPosition[0])
       addSnake()
       createRandomFood()
       speed -= 100
