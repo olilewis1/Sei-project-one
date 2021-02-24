@@ -12,6 +12,7 @@ function init () {
   const snakeCurrentPosition = [3, 4, 5]
   const snakeTail = []
   let snakeDirection
+  let snakeDirectionInvalid
   //*food*//
   const foodClass = 'food'
   //*functions
@@ -55,6 +56,7 @@ function init () {
   function handleKeyUp(event) {
     const key = event.keyCode
     removeSnake(snakeCurrentPosition)
+    snakeDirectionInvalid = 'false'
     if (key === 39 && snakeCurrentPosition[0] % width !== width - 1 ) {
       snakeDirection = 'right'
       moveSnake()
@@ -71,8 +73,10 @@ function init () {
       snakeDirection = 'down'
       moveSnake()
     } else {
+      snakeDirectionInvalid = 'invalid'
       console.log('invalid key')
       stopMyInterval()
+      gameOver()
     }
     addSnake(snakeCurrentPosition)
   }
@@ -132,10 +136,11 @@ function init () {
     })
     if ( gameOverSnake.length >= 2){ 
       console.log('GAME OVER')
-      console.log('why is it game over', gameOverSnake)
+    } else if (snakeDirectionInvalid === 'invalid') { 
+      console.log('GAME OVER ')
     }
   }
-  
+
   function stopMyInterval() { 
     clearInterval(intervalSet)
   }
