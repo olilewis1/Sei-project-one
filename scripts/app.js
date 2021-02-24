@@ -10,13 +10,19 @@ function init () {
   // const SnakeTailClass = 'snake'
   const snakeStartPosition = [3, 4, 5]
   const snakeCurrentPosition = [3, 4, 5]
-  const snakeTail = []
   let snakeDirection
   let speed = 1000
   let snakeDirectionInvalid = 'true'
+
   //*food*//
   const foodClass = 'food'
   //*functions
+
+  function gameOverSnake() { 
+    const gameOverSnake = snakeCurrentPosition.filter((element)=> { 
+      return element === snakeCurrentPosition[0]
+    })
+  }
   function createRandomFood() {
     const foodCurrentPosition = Math.floor(Math.random() * Number(100))
     addFood(foodCurrentPosition)
@@ -57,6 +63,7 @@ function init () {
   function handleKeyUp(event) {
     const key = event.keyCode
     // removeSnake(snakeCurrentPosition)
+    addSnake()
     if (key === 39 && snakeCurrentPosition[0] % width !== width - 1 ) {
       snakeDirection = 'right'
       moveSnake()
@@ -89,28 +96,34 @@ function init () {
       snakeCurrentPosition.push(snakeCurrentPosition[0])
       addSnake()
       createRandomFood()
-      speed -= 100
+      speed -= 500
       console.log(speed)
     } else {
-      removeSnake()
+      removeSnake() 
     }
   }
   function moveSnake() {
     checkFoodBeingEaten()
-    if (snakeDirection === 'right' && snakeCurrentPosition[0] % width !== width - 1) {
+    const gameOverSnake = snakeCurrentPosition.filter((element)=> { 
+      return element === snakeCurrentPosition[0]
+    })
+    if (snakeDirection === 'right' && snakeCurrentPosition[0] % width !== width - 1 && gameOverSnake.length < 2) {
+      console.log('snake before right', snakeCurrentPosition)
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
       snakeCurrentPosition.pop()
       addSnake() 
       console.log('right', snakeCurrentPosition)
-    } else if (snakeDirection === 'left' && snakeCurrentPosition[0] % width !== 0) { 
+    } else if (snakeDirection === 'left' && snakeCurrentPosition[0] % width !== 0 && gameOverSnake.length < 2) { 
+      console.log('snake before left', snakeCurrentPosition)
+      console.log('game over snake', gameOverSnake)
       removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1 && snakeCurrentPosition[0] >= width)
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1 && gameOverSnake.length < 2)
       snakeCurrentPosition.pop()
       snakeCurrentPosition[1] += 1
       addSnake()
       console.log('left', snakeCurrentPosition)
-    } else if (snakeDirection === 'up' && snakeCurrentPosition[0] >= width) { 
+    } else if (snakeDirection === 'up' && snakeCurrentPosition[0] >= width && gameOverSnake.length < 2) { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= width)
       snakeCurrentPosition[1] += width
@@ -125,15 +138,9 @@ function init () {
       snakeCurrentPosition.pop()
       addSnake()
       console.log('down', snakeCurrentPosition)
-      
-    } else if (snakeCurrentPosition[0] === snakeStartPosition[0]) { 
-      removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1 && snakeCurrentPosition[0] >= width)
-      snakeCurrentPosition.pop()
-      snakeCurrentPosition[1] += 1
-      addSnake()
     } else { 
       gameOver()
+      console.log('are we going here?')
     }
     
   }
@@ -142,24 +149,15 @@ function init () {
 
   function gameOver() { 
     console.log('gameover')
-    const gameOverSnake = snakeCurrentPosition.filter((element)=> { 
-      return element === snakeCurrentPosition[0]
-    })
-    if ( gameOverSnake.length >= 2){ 
-      console.log('GAME OVER SNAKE')
-      stopMyInterval()
-      console.log(snakeCurrentPosition)
-      // alert('GAME OVER FWEND!')
-    } else if (snakeDirectionInvalid === 'invalid') { 
-      console.log('GAME OVER Wall')
-      stopMyInterval()
-      // alert('GAME OVER FWEND!')
-    }
+    stopMyInterval()
+    console.log(snakeCurrentPosition)
+    // alert('GAME OVER FWEND!')
   }
 
   function stopMyInterval() { 
     clearInterval(intervalSet)
   }
+
 
   // function speedUp (newSpeed) { 
   //   // if (typeof loopGame === undefined) { 
