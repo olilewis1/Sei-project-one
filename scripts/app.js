@@ -8,7 +8,7 @@ function init () {
   const snakeClass = 'snake'
   //multiple divs
   // const SnakeTailClass = 'snake'
-  // const snakeStartPosition = [3, 4, 5]
+  const snakeStartPosition = [3, 4, 5]
   const snakeCurrentPosition = [3, 4, 5]
   const snakeTail = []
   let snakeDirection
@@ -97,13 +97,11 @@ function init () {
   }
   function moveSnake() {
     checkFoodBeingEaten()
-    gameOver()
     if (snakeDirection === 'right' && snakeCurrentPosition[0] % width !== width - 1) {
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
       snakeCurrentPosition.pop()
       addSnake() 
-      gameOver()
       console.log('right', snakeCurrentPosition)
     } else if (snakeDirection === 'left' && snakeCurrentPosition[0] % width !== 0) { 
       removeSnake()
@@ -111,7 +109,6 @@ function init () {
       snakeCurrentPosition.pop()
       snakeCurrentPosition[1] += 1
       addSnake()
-      gameOver()
       console.log('left', snakeCurrentPosition)
     } else if (snakeDirection === 'up' && snakeCurrentPosition[0] >= width) { 
       removeSnake()
@@ -119,7 +116,7 @@ function init () {
       snakeCurrentPosition[1] += width
       snakeCurrentPosition.pop()
       addSnake()
-      gameOver()
+
       console.log('up', snakeCurrentPosition)
     } else if (snakeDirection === 'down' && snakeCurrentPosition[0] + width <= width * width - 1) { 
       removeSnake()
@@ -127,17 +124,27 @@ function init () {
       snakeCurrentPosition[1] -= width
       snakeCurrentPosition.pop()
       addSnake()
-      gameOver()
       console.log('down', snakeCurrentPosition)
       
-    } 
+    } else if (snakeCurrentPosition[0] === snakeStartPosition[0]) { 
+      removeSnake()
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1 && snakeCurrentPosition[0] >= width)
+      snakeCurrentPosition.pop()
+      snakeCurrentPosition[1] += 1
+      addSnake()
+    } else { 
+      gameOver()
+    }
     
   }
   
   
 
   function gameOver() { 
-    const  gameOverSnake = 0
+    console.log('gameover')
+    const gameOverSnake = snakeCurrentPosition.filter((element)=> { 
+      return element === snakeCurrentPosition[0]
+    })
     if ( gameOverSnake.length >= 2){ 
       console.log('GAME OVER SNAKE')
       stopMyInterval()
