@@ -103,3 +103,13 @@ track length of current array
 add the number index 
 
 look at length of tail, look for that number in current array, nd push back the index of onbe less. 
+
+
+
+Things to do: 
+
+sort out bugs 
+speed up snake 
+game over 
+sort out where to put stop my interval 
+sort out so it goes only once to right, and up down 

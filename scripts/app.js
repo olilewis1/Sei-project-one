@@ -8,12 +8,10 @@ function init () {
   const snakeClass = 'snake'
   //multiple divs
   // const SnakeTailClass = 'snake'
-  const snakeStartPosition = [3, 4, 5]
+  // const snakeStartPosition = [3, 4, 5]
   const snakeCurrentPosition = [3, 4, 5]
   const snakeTail = []
   let snakeDirection
-  let snakeDirectionInvalid
-  let loopGame
   let speed = 1000
   //*food*//
   const foodClass = 'food'
@@ -77,7 +75,7 @@ function init () {
     } else {
       snakeDirectionInvalid = 'invalid'
       console.log('invalid key')
-      gameOver()
+      stopMyInterval()
     }
     addSnake(snakeCurrentPosition)
   }
@@ -91,7 +89,7 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
       addSnake()
       createRandomFood()
-      speedUp() 
+      speed -= 100
       console.log(speed)
     } else {
       removeSnake()
@@ -106,25 +104,28 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
       snakeCurrentPosition.pop()
       addSnake() 
-      gameOver()
+      console.log('right', snakeCurrentPosition)
     } else if (snakeDirection === 'left') { 
       removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1)
       snakeCurrentPosition.pop()
+      snakeCurrentPosition[1] += 1
       addSnake()
-      gameOver()
+      console.log('left', snakeCurrentPosition)
     } else if (snakeDirection === 'up') { 
       removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 10)
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= width)
+      snakeCurrentPosition[1] += width
       snakeCurrentPosition.pop()
       addSnake()
-      gameOver()
+      console.log('up', snakeCurrentPosition)
     } else if (snakeDirection === 'down') { 
       removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 10)
+      snakeCurrentPosition.unshift(snakeCurrentPosition[0] += width)
+      snakeCurrentPosition[1] -= width
       snakeCurrentPosition.pop()
       addSnake()
-      gameOver()
+      console.log('down', snakeCurrentPosition)
       
     } 
     // move in all directions
@@ -138,11 +139,11 @@ function init () {
     })
     if ( gameOverSnake.length >= 2){ 
       console.log('GAME OVER')
-      stopMyInterval()
+      // stopMyInterval()
       // alert('GAME OVER FWEND!')
     } else if (snakeDirectionInvalid === 'invalid') { 
       console.log('GAME OVER ')
-      stopMyInterval()
+      // stopMyInterval()
       // alert('GAME OVER FWEND!')
     }
   }
@@ -151,17 +152,17 @@ function init () {
     clearInterval(intervalSet)
   }
 
-  function speedUp (newSpeed) { 
-    // if (typeof loopGame === undefined) { 
-    //   stopMyInterval()
-    // } else { 
-      // console.log('speeding')
-      loopGame = setInterval(newSpeed)
-      newspeed = speed -= 100
-      newSpeed = speed - 100
-      console.log('speed =', speed)
-    // }
-  }
+  // function speedUp (newSpeed) { 
+  //   // if (typeof loopGame === undefined) { 
+  //   //   stopMyInterval()
+  //   // } else { 
+  //   // console.log('speeding')
+  //   loopGame = setInterval(newSpeed)  
+  //   speed -= 500
+  //   newSpeed = speed -= 100
+  //   console.log('speed =', speed)
+  //   // }
+  // }
 
   //*timer
   // function startMyInterval() { 

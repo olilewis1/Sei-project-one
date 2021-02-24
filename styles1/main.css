@@ -44,8 +44,8 @@ body {
 
 
 .grid div.food {
-  background-color: #9bbc0f;
-  box-shadow: 0  0  5px  #9bbc0f;
+  background-color: blueviolet;
+  box-shadow: 0  0  5px  blueviolet;
 }
 
 .grid div.snake {
