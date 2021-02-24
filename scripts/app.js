@@ -13,6 +13,8 @@ function init () {
   const snakeTail = []
   let snakeDirection
   let snakeDirectionInvalid
+  let loopGame
+  let speed = 1000
   //*food*//
   const foodClass = 'food'
   //*functions
@@ -75,7 +77,6 @@ function init () {
     } else {
       snakeDirectionInvalid = 'invalid'
       console.log('invalid key')
-      stopMyInterval()
       gameOver()
     }
     addSnake(snakeCurrentPosition)
@@ -90,7 +91,8 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
       addSnake()
       createRandomFood()
-      console.log(snakeCurrentPosition)
+      speedUp() 
+      console.log(speed)
     } else {
       removeSnake()
     }
@@ -136,8 +138,12 @@ function init () {
     })
     if ( gameOverSnake.length >= 2){ 
       console.log('GAME OVER')
+      stopMyInterval()
+      // alert('GAME OVER FWEND!')
     } else if (snakeDirectionInvalid === 'invalid') { 
       console.log('GAME OVER ')
+      stopMyInterval()
+      // alert('GAME OVER FWEND!')
     }
   }
 
@@ -145,12 +151,24 @@ function init () {
     clearInterval(intervalSet)
   }
 
+  function speedUp (newSpeed) { 
+    // if (typeof loopGame === undefined) { 
+    //   stopMyInterval()
+    // } else { 
+      // console.log('speeding')
+      loopGame = setInterval(newSpeed)
+      newspeed = speed -= 100
+      newSpeed = speed - 100
+      console.log('speed =', speed)
+    // }
+  }
+
   //*timer
   // function startMyInterval() { 
   const intervalSet = setInterval(() => {
     moveSnake()
-    
-  }, 1000)
+  }, speed)
+  console.log('interval set', setInterval)
   // }
 
   //*eventlisteners*//
