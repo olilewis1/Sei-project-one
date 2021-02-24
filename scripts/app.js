@@ -106,28 +106,36 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 1)
       snakeCurrentPosition.pop()
       addSnake()
+      gameOver()
     } else if (snakeDirection === 'up') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] - 10)
       snakeCurrentPosition.pop()
       addSnake()
+      gameOver()
     } else if (snakeDirection === 'down') { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 10)
       snakeCurrentPosition.pop()
       addSnake()
+      gameOver()
       
     } 
     // move in all directions
   }
   
+  
 
   function gameOver() { 
-    const gameOverCheck =  cells[snakeCurrentPosition[0]].classList.contains(snakeClass)
-    if (gameOverCheck) { 
-      console.log('hello')
+    let gameOverSnake = snakeCurrentPosition.filter((element)=> { 
+      return element === snakeCurrentPosition[0]
+    })
+    if ( gameOverSnake.length >= 2){ 
+      console.log('GAME OVER')
+      console.log('why is it game over', gameOverSnake)
     }
   }
+  
   function stopMyInterval() { 
     clearInterval(intervalSet)
   }
@@ -136,7 +144,7 @@ function init () {
   // function startMyInterval() { 
   const intervalSet = setInterval(() => {
     moveSnake()
-    console.log(snakeCurrentPosition)
+    
   }, 1000)
   // }
 
