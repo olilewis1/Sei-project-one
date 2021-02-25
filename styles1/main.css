@@ -6,14 +6,11 @@
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 500px;
-  max-width: 500px;
+  height: 300px;
+  max-width: 300px;
   margin-top: -333px;
 }
 
-div { 
-  font-size: 0px;
-}
 div.grid-item {
   width: 30px;
   height: 30px;
@@ -37,16 +34,20 @@ div.grid-item {
 body {
   height: 100vh;
   margin: 0;
-
+  background-color: black;
+ 
 }
 
 
 .grid-wrapper {
-  height: 70vh;
-  /* background-image: url('https://d3nevzfk7ii3be.cloudfront.net/igi/i52qsvCLGdBlOTSe.large');
-  background-size: 100%; */
+  height: 100vh;
+  background-image: url(https://static.turbosquid.com/Preview/000290/572/N7/nintendo-gameboy-color-console-3d-ma_D.jpg);
   background-repeat: no-repeat;
-  margin-top: 53px;
+  background-size: cover;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  margin-top: -77px;
+
 }
 
 
@@ -62,8 +63,12 @@ body {
 
 .grid-flex {
   padding-top: 20vh; 
-  height: 90vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.start-screen { 
+  background-image: url('https://static.wikia.nocookie.net/horrormovies/images/0/0f/Anaconda.jpg/revision/latest/top-crop/width/360/height/450?cb=20090924124311');
 }
