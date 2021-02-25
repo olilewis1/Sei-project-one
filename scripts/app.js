@@ -22,7 +22,7 @@ function init () {
 
   //*functions
   function createRandomFood() {
-    const foodCurrentPosition = Math.floor(Math.random() * Number(100))
+    const foodCurrentPosition = Math.floor(Math.random() * Number(399))
     addFood(foodCurrentPosition)
   }
   function addFood (position) {
