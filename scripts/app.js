@@ -108,28 +108,32 @@ function init () {
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
       snakeCurrentPosition.pop()
       addSnake() 
+      myTimeout()
     } else if (snakeDirection === 'left' && snakeCurrentPosition[0] % width !== 0 && gameOverSnake.length < 2) { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1 && gameOverSnake.length < 2)
       snakeCurrentPosition.pop()
       snakeCurrentPosition[1] += 1
       addSnake()
+      myTimeout()
     } else if (snakeDirection === 'up' && snakeCurrentPosition[0] >= width && gameOverSnake.length < 2) { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= width)
       snakeCurrentPosition[1] += width
       snakeCurrentPosition.pop()
       addSnake()
+      myTimeout()
     } else if (snakeDirection === 'down' && snakeCurrentPosition[0] + width <= width * width - 1 && gameOverSnake.length < 2) { 
       removeSnake()
       snakeCurrentPosition.unshift(snakeCurrentPosition[0] += width)
       snakeCurrentPosition[1] -= width
       snakeCurrentPosition.pop()
       addSnake()
+      myTimeout()
     } else { 
       gameOver()
       console.log('are we going here?')
-      clearTimeout(myTimeout)
+      clearTimeout()
     }
     
   }
