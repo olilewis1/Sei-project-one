@@ -38,6 +38,7 @@ display: flex;
   justify-content: center;
   margin: 0%;
   font-family: 'DotGothic16', sans-serif;
+  font-size: 25px;
 }
 
 
@@ -96,4 +97,6 @@ button {
   color:#FFDE00;
   background-color:#3B4CCA;
   font-family: 'DotGothic16', sans-serif;
+  height: 40px;
+  margin:10px;
 }
