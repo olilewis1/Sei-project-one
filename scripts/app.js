@@ -1,6 +1,6 @@
 function init () {
   //*grid*//
-  const grid = document.querySelector('.grid')
+  let grid = document.querySelector('.grid')
   const width = 20
   const cellCount = width * width
   const cells = []
@@ -10,10 +10,12 @@ function init () {
   const snakeStartPosition = [3, 4, 5]
   const snakeCurrentPosition = [3, 4, 5]
   const audio = document.getElementById('audio')
+  const audio2 = document.getElementById('audio2')
   let snakeDirection
   let speed = 1000
   let snakeDirectionInvalid = 'true'
   let snakeTimer
+  const gameOverPic = document.querySelector('#game-over-span')
   //*food*//
   const foodClass = 'food'
   //*start button*// 
@@ -101,7 +103,7 @@ function init () {
         speed -= 100
       } else if ( speed >= 300) { 
         speed -= 50
-      } else if (speed > 50) { 
+      } else if (speed > 125) { 
         speed -= 25
       }
       console.log(speed)
@@ -146,26 +148,33 @@ function init () {
   }
   
   function gameOver() { 
+    audio.pause()
     console.log('gameover')
     clearInterval(snakeTimer)
     console.log(snakeCurrentPosition)
-    alert(`Game Over Fwend, your final score: ${currentScore}`)
+    grid = grid.classList.add('hello')
+    gameOverPic.classList.add('game-over-pic')
+    gameOverPic.innerHTML = `Game Over Fwend, your final score: ${currentScore} <img src='images/icons/tick.png' class='mark'>`
+    audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/rkkmtqon/116-victory%20%28vs%20trainer%29.mp3'
+    audio.play()
     // stopTimeOut()
     setTimeout(() => {
       location.reload()
-    }, 3000)
+    }, 10000)
   }
 
   function startButtonClick () { 
     moveSnake()
-    playAudio()
+    audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/gbhogmtx/107-battle%20%28vs%20wild%20pokemon%29.mp3'
+    audio.play()
     snakeDirection = 'left'
   }
-
   function playAudio () { 
     audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/vvdpydwp/101-opening.mp3' 
     audio.play()
   }
+
+
 
 
   
