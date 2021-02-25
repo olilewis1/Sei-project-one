@@ -1,7 +1,7 @@
 function init () {
   //*grid*//
   const grid = document.querySelector('.grid')
-  const width = 10
+  const width = 20
   const cellCount = width * width
   const cells = []
   //Snake//
@@ -63,19 +63,19 @@ function init () {
     // removeSnake(snakeCurrentPosition)
     addSnake()
     // myTimeout()
-    if (key === 39 && snakeCurrentPosition[0] % width !== width - 1 ) {
+    if (key === 39) {
       snakeDirection = 'right'
       moveSnake()
-    } else if (key === 37 && snakeCurrentPosition[0] % width !== 0) {
+    } else if (key === 37) {
       // snakeCurrentPosition--
       snakeDirection = 'left'
       moveSnake()
-    } else if (key === 38 && snakeCurrentPosition[0] >= width) {
+    } else if (key === 38) {
       // snakeCurrentPosition -= width
       snakeDirection = 'up'
       moveSnake()
       
-    } else if (key === 40 && snakeCurrentPosition[0] + width <= width * width - 1 ) {
+    } else if (key === 40) {
       // snakeCurrentPosition += width
       snakeDirection = 'down'
       moveSnake()
@@ -148,13 +148,15 @@ function init () {
     console.log('gameover')
     clearInterval(snakeTimer)
     console.log(snakeCurrentPosition)
-    // alert('GAME OVER FWEND!')
+    alert(`Game Over Fwend, your final score: ${currentScore}`)
     // stopTimeOut()
+    setTimeout(() => {
+      location.reload()
+    }, 3000)
   }
 
   function startButtonClick () { 
     moveSnake()
-    console.log('snake direction', snakeCurrentPosition)
     snakeDirection = 'left'
   }
 
