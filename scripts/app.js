@@ -111,7 +111,6 @@ function init () {
   function moveSnake() {
     clearInterval(snakeTimer)
     snakeTimer = setInterval(() => {
-    
       checkFoodBeingEaten()
       const gameOverSnake = snakeCurrentPosition.filter((element)=> { 
         return element === snakeCurrentPosition[0]
@@ -153,8 +152,10 @@ function init () {
     // stopTimeOut()
   }
 
-  function startButtonClick (event) { 
-
+  function startButtonClick () { 
+    moveSnake()
+    console.log('snake direction', snakeCurrentPosition)
+    snakeDirection = 'left'
   }
 
 
