@@ -8,6 +8,7 @@
   justify-content: center;
   height: 300px;
   max-width: 300px;
+
 } 
 
 
@@ -26,17 +27,17 @@
 }
 
 body {
-  /* height: 100vh;
-  margin: 0; */
+
   background-color: black;
- 
+ justify-content: center;
 }
 
 
 .grid-wrapper {
+  display: flex;
+  justify-content: center;
   background-image: url(https://static.turbosquid.com/Preview/000290/572/N7/nintendo-gameboy-color-console-3d-ma_D.jpg);
-
-
+align-items: center;
 }
 
 
@@ -50,6 +51,8 @@ body {
     box-shadow: 0  0  5px #8bac0f;
 }
 
-.grid-flex {
-
+#grid-flex{ 
+  padding:100px;
+  max-width: 140vh;
+  align-items: center;
 }
