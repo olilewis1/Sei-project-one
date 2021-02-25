@@ -15,9 +15,12 @@ function init () {
   let snakeTimer
   //*food*//
   const foodClass = 'food'
+  //*start button*// 
+  const startButton = document.querySelector('button')
+  console.log('clicked', startButton)
+  console.log('start button ', startButton)
+
   //*functions
-
-
   function createRandomFood() {
     const foodCurrentPosition = Math.floor(Math.random() * Number(100))
     addFood(foodCurrentPosition)
@@ -138,15 +141,10 @@ function init () {
         addSnake()
       } else { 
         gameOver()
-        // clearTimeout()
       }
     }, speed)
   }
   
- 
-  
-  
-
   function gameOver() { 
     console.log('gameover')
     clearInterval(snakeTimer)
@@ -155,51 +153,18 @@ function init () {
     // stopTimeOut()
   }
 
-  // function stopTimeOut () { 
-  //   clearInterval()
-  // }
-  // function myTimeout() { 
-  //   setInterval(() => {
-  //     moveSnake()
-  //     console.log('speed', speed)
-  //   }, speed)
-  // }
+  function startButtonClick (event) { 
 
-  // function speedUp() { 
-  //   if (speed > 100) { 
-  //     speed -= 100
-  //   }
-  // }
-  // function stopMyInterval() { 
-  //   clearInterval(intervalSet)
-  // }
+  }
 
 
-  // function speedUp (newSpeed) { 
-  //   // if (typeof loopGame === undefined) { 
-  //   //   stopMyInterval()
-  //   // } else { 
-  //   // console.log('speeding')
-  //   loopGame = setInterval(newSpeed)  
-  //   speed -= 500
-  //   newSpeed = speed -= 100
-  //   console.log('speed =', speed)
-  //   // }
-  // }
-
-  //*timer
-  // function startMyInterval() { 
   
   
 
   //*eventlisteners*//
   document.addEventListener('keydown', handleKeyUp)
+  startButton.addEventListener('click', startButtonClick)
   createGrid(snakeCurrentPosition)
 }
 window.addEventListener('DOMContentLoaded', init)
-// next steps
-// get snake moving right left up and down
-// check our remove snake function - console.log your way through it
-// make sure its being called in the right places
-// use console.log to figure out why our food check is always true
-// get it moving on a timer
+

@@ -80,6 +80,8 @@ snake to go faster when eat food.
 
 8) restart game. 
 
+start game button
+
 
 
 post finish CSS: 
@@ -91,7 +93,6 @@ add interval to food so randomly moving at times.
 
 things to debug: 
 
-if statement for food being eaten can be shortened 
 
 things to sort out: 
 how to go faster
@@ -109,7 +110,11 @@ look at length of tail, look for that number in current array, nd push back the 
 Things to do: 
 
 sort out bugs 
-speed up snake 
-game over 
-sort out where to put stop my interval 
-sort out so it goes only once to right, and up down 
+sort out so food doiesn't go where snake is. 
+// next steps
+// get snake moving right left up and down
+// check our remove snake function - console.log your way through it
+// make sure its being called in the right places
+// use console.log to figure out why our food check is always true
+// get it moving on a timer
+
