@@ -9,16 +9,7 @@ function init () {
   //multiple divs
   const snakeStartPosition = [3, 4, 5]
   const snakeCurrentPosition = [3, 4, 5]
-  const roundedSquareTopLeft = [0]
-  const roundedSquareTopRight = [19]
-  const roundedSquareBottomLeft = [380]
-  const roundedSquareBottomRight = [399]
-  const topLeftClass = 'border'
-  const topRightClass = document.getElementsByClassName('border-radius-top-right')
-  const bottomLeftClass = document.getElementsByClassName('border-radius-bottom-left')
-  const bottomRightClass = document.getElementsByClassName('border-radius-bottom-right ')
-  // roundedSquareTopLeft.classList.add(topLeftClass)
-  // cells[0].classList.add('border')
+  const audio = document.getElementById('audio')
   let snakeDirection
   let speed = 1000
   let snakeDirectionInvalid = 'true'
@@ -167,7 +158,13 @@ function init () {
 
   function startButtonClick () { 
     moveSnake()
+    playAudio()
     snakeDirection = 'left'
+  }
+
+  function playAudio () { 
+    audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/vvdpydwp/101-opening.mp3' 
+    audio.play()
   }
 
 
