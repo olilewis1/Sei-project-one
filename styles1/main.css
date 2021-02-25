@@ -6,9 +6,8 @@
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 300px;
-  max-width: 300px;
-
+  height: 250px;
+  max-width: 250px;
 } 
 
 
@@ -36,8 +35,9 @@ body {
 .grid-wrapper {
   display: flex;
   justify-content: center;
-  background-image: url(https://static.turbosquid.com/Preview/000290/572/N7/nintendo-gameboy-color-console-3d-ma_D.jpg);
 align-items: center;
+max-width: 160vh;
+
 }
 
 
@@ -55,4 +55,17 @@ align-items: center;
   padding:100px;
   max-width: 140vh;
   align-items: center;
+  
+}
+
+#background-gameboy { 
+  background-image: url(https://static.turbosquid.com/Preview/000290/572/N7/nintendo-gameboy-color-console-3d-ma_D.jpg);
+  background-repeat: no-repeat;
+  width: 100vh;
+  height: 90vh;
+}
+
+div { 
+  display: flex;
+  justify-content: center;
 }
