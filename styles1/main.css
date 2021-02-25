@@ -13,8 +13,8 @@ B3A125    other yellow
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 185px;
-  max-width: 185px;
+  height: 196px;
+  max-width: 196px;
 } 
 
 
@@ -24,7 +24,7 @@ B3A125    other yellow
   height: 5%;
   width: 5%;
   font-size:1vh;
-  background-color: rgb(15, 56, 15);
+  background-color: #3B4CCA;
   color: transparent;
 }
 
@@ -33,9 +33,11 @@ B3A125    other yellow
 }
 
 body {
-
+display: flex;
   background-color: black;
- justify-content: center;
+  justify-content: center;
+  margin: 0%;
+  font-family: 'DotGothic16', sans-serif;
 }
 
 
@@ -49,20 +51,20 @@ max-width: 160vh;
 
 
 .grid div.food {
-  background-color: blueviolet;
-  box-shadow: 0  0  5px  blueviolet;
+  background-color: #CC0000;
+  box-shadow: 0  0  5px  #CC0000;
 }
 
 .grid div.snake {
-    background-color: #8bac0f;
-    box-shadow: 0  0  5px #8bac0f;
+    background-color: #B3A125;
+    box-shadow: 0  0  5px #B3A125;
 }
 
 #grid-flex{ 
-  padding: 159px;
+  padding: 178px;
   max-width: 140vh;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 100px;
   
 }
 
@@ -70,10 +72,28 @@ max-width: 160vh;
   background-image: url(https://static.turbosquid.com/Preview/000290/572/N7/nintendo-gameboy-color-console-3d-ma_D.jpg);
   background-repeat: no-repeat;
   width: 100vh;
-  height: 90vh;
+  height: 100vh;
+  background-size: 110%;
+  overflow: hidden;
 }
 
 div { 
   display: flex;
   justify-content: center;
+}
+
+#flex-button { 
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+.score { 
+  color: #FFDE00 ;
+}
+
+
+button { 
+  color:#FFDE00;
+  background-color:#3B4CCA;
+  font-family: 'DotGothic16', sans-serif;
 }

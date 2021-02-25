@@ -4,16 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles1/main.css">
   <script src="./scripts/app.js" charset="utf-8"></script>
   <title>Snake Game</title>
 </head>
 <body>
-  <div class="score"> 
-    score: 
-    <span id="current-score"></span> 
-  </div>
-  <div class="start-button"> <button>Start Game </button></div>
   <div class="grid-wrapper"> 
     <section id="background-gameboy">
       <div id='grid-flex'>
@@ -22,5 +19,12 @@
       </div>
     </section>
   </div> 
+  <section id="flex-button">
+  <div class="start-button"> <button>Start Game </button></div>
+  <div class="score"> 
+    score: 
+    <span id="current-score"></span> 
+  </div>
+</section>
 </body>
 </html>
