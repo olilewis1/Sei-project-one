@@ -12,6 +12,7 @@ function init () {
   let snakeDirection
   let speed = 1000
   let snakeDirectionInvalid = 'true'
+  let snakeTimer
   //*food*//
   const foodClass = 'food'
   //*functions
@@ -58,7 +59,7 @@ function init () {
     const key = event.keyCode
     // removeSnake(snakeCurrentPosition)
     addSnake()
-    myTimeout()
+    // myTimeout()
     if (key === 39 && snakeCurrentPosition[0] % width !== width - 1 ) {
       snakeDirection = 'right'
       moveSnake()
@@ -92,76 +93,83 @@ function init () {
       snakeCurrentPosition.push(snakeCurrentPosition[1])
       addSnake()
       createRandomFood()
-      speedUp()
+      if (speed >= 700) { 
+        speed -= 100
+      } else if ( speed >= 300) { 
+        speed -= 50
+      } else if (speed > 25) { 
+        speed -= 25
+      }
       console.log(speed)
     } else {
       removeSnake() 
     }
   }
   function moveSnake() {
-    checkFoodBeingEaten()
-    const gameOverSnake = snakeCurrentPosition.filter((element)=> { 
-      return element === snakeCurrentPosition[0]
-    })
-    if (snakeDirection === 'right' && snakeCurrentPosition[0] % width !== width - 1 && gameOverSnake.length < 2) {
-      removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
-      snakeCurrentPosition.pop()
-      addSnake() 
-      myTimeout()
-    } else if (snakeDirection === 'left' && snakeCurrentPosition[0] % width !== 0 && gameOverSnake.length < 2) { 
-      removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1 && gameOverSnake.length < 2)
-      snakeCurrentPosition.pop()
-      snakeCurrentPosition[1] += 1
-      addSnake()
-      myTimeout()
-    } else if (snakeDirection === 'up' && snakeCurrentPosition[0] >= width && gameOverSnake.length < 2) { 
-      removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= width)
-      snakeCurrentPosition[1] += width
-      snakeCurrentPosition.pop()
-      addSnake()
-      myTimeout()
-    } else if (snakeDirection === 'down' && snakeCurrentPosition[0] + width <= width * width - 1 && gameOverSnake.length < 2) { 
-      removeSnake()
-      snakeCurrentPosition.unshift(snakeCurrentPosition[0] += width)
-      snakeCurrentPosition[1] -= width
-      snakeCurrentPosition.pop()
-      addSnake()
-      myTimeout()
-    } else { 
-      gameOver()
-      console.log('are we going here?')
-      clearTimeout()
-    }
+    clearInterval(snakeTimer)
+    snakeTimer = setInterval(() => {
     
+      checkFoodBeingEaten()
+      const gameOverSnake = snakeCurrentPosition.filter((element)=> { 
+        return element === snakeCurrentPosition[0]
+      })
+      if (snakeDirection === 'right' && snakeCurrentPosition[0] % width !== width - 1 && gameOverSnake.length < 2) {
+        removeSnake()
+        snakeCurrentPosition.unshift(snakeCurrentPosition[0] + 1)
+        snakeCurrentPosition.pop()
+        addSnake() 
+      } else if (snakeDirection === 'left' && snakeCurrentPosition[0] % width !== 0 && gameOverSnake.length < 2) { 
+        removeSnake()
+        snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= 1 && gameOverSnake.length < 2)
+        snakeCurrentPosition.pop()
+        snakeCurrentPosition[1] += 1
+        addSnake()
+      } else if (snakeDirection === 'up' && snakeCurrentPosition[0] >= width && gameOverSnake.length < 2) { 
+        removeSnake()
+        snakeCurrentPosition.unshift(snakeCurrentPosition[0] -= width)
+        snakeCurrentPosition[1] += width
+        snakeCurrentPosition.pop()
+        addSnake()
+      } else if (snakeDirection === 'down' && snakeCurrentPosition[0] + width <= width * width - 1 && gameOverSnake.length < 2) { 
+        removeSnake()
+        snakeCurrentPosition.unshift(snakeCurrentPosition[0] += width)
+        snakeCurrentPosition[1] -= width
+        snakeCurrentPosition.pop()
+        addSnake()
+      } else { 
+        gameOver()
+        // clearTimeout()
+      }
+    }, speed)
   }
+  
+ 
   
   
 
   function gameOver() { 
     console.log('gameover')
-    // stopMyInterval()
+    clearInterval(snakeTimer)
     console.log(snakeCurrentPosition)
     // alert('GAME OVER FWEND!')
-    stopTimeOut()
+    // stopTimeOut()
   }
 
-  function stopTimeOut () { 
-    clearTimeout(myTimeout)
-  }
-  function myTimeout() { setTimeout(() => {
-    moveSnake()
-    console.log('speed', speed)
-  }, speed)
-  }
+  // function stopTimeOut () { 
+  //   clearInterval()
+  // }
+  // function myTimeout() { 
+  //   setInterval(() => {
+  //     moveSnake()
+  //     console.log('speed', speed)
+  //   }, speed)
+  // }
 
-  function speedUp() { 
-    if (speed > 100) { 
-      speed -= 100
-    }
-  }
+  // function speedUp() { 
+  //   if (speed > 100) { 
+  //     speed -= 100
+  //   }
+  // }
   // function stopMyInterval() { 
   //   clearInterval(intervalSet)
   // }
