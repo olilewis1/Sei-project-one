@@ -13,8 +13,8 @@ B3A125    other yellow
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 190px;
-  max-width: 190px;
+  height: 200px;
+  max-width: 200px;
 } 
 
 
@@ -62,7 +62,7 @@ max-width: 160vh;
 }
 
 #grid-flex{ 
-  padding: 158px;
+  padding: 178px;
   max-width: 140vh;
   align-items: center;
   margin-left: 100px;
