@@ -122,3 +122,20 @@ img {
   padding-left: 5px;
 }
 
+@media only screen and (max-width: 500px ) { 
+  #background-gameboy { background-image: none;}
+  .grid {   height: 300px;
+    max-width: 300px;
+   }
+  .grid div {
+      height: 5%;
+      width: 5%; 
+  }
+  #grid-flex {     
+    max-width: 170vh;
+    align-items: center;
+    margin-left: 0px;
+  padding: 5px;}
+  body {flex-direction: column-reverse; }
+}
+

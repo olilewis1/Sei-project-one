@@ -23,7 +23,6 @@ function init () {
   const startButton = document.querySelector('button')
   console.log('clicked', startButton)
   console.log('start button ', startButton)
-
   //*functions
   function createRandomFood() {
     const foodCurrentPosition = Math.floor(Math.random() * Number(399))
@@ -50,6 +49,7 @@ function init () {
     }
     addSnake()
     createRandomFood()
+    
   }
   function addSnake() {
     snakeCurrentPosition.forEach(position => {
@@ -157,7 +157,7 @@ function init () {
     console.log('gameover')
     clearInterval(snakeTimer)
     console.log(snakeCurrentPosition)
-    grid = grid.classList.add('hello')
+    hideGrid()
     gameOverSpan.classList.add('game-over-span')
     gameOverSpan.innerHTML = `Game Over Fwend, your final score: ${currentScore} `
     gameOverPic.classList.add('game-over-pic')
@@ -171,6 +171,7 @@ function init () {
   }
 
   function startButtonClick () { 
+    
     moveSnake()
     snakeDirection = 'left'
     setTimeout(() => {
@@ -186,6 +187,15 @@ function init () {
     audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/gbhogmtx/107-battle%20%28vs%20wild%20pokemon%29.mp3'
     audio.play()
   }
+
+  function hideGrid() { 
+    grid = grid.classList.add('hello')
+  }
+
+
+
+
+    
 
 
 
