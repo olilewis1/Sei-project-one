@@ -21,8 +21,7 @@ function init () {
   const foodClass = 'food'
   //*start button*// 
   const startButton = document.querySelector('button')
-  console.log('clicked', startButton)
-  console.log('start button ', startButton)
+  const refreshButton = document.querySelector('#Refresh')
   //*functions
   function createRandomFood() {
     const foodCurrentPosition = Math.floor(Math.random() * Number(399))
@@ -164,14 +163,15 @@ function init () {
     gameOverPic.innerHTML = '<img src=https://i.imgur.com/iNEQPBw.png>'
     audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/rkkmtqon/116-victory%20%28vs%20trainer%29.mp3'
     audio.play()
+    startButton.style.display = 'none'
+    refreshButton.style.display = 'block'
     // stopTimeOut()
     setTimeout(() => {
       location.reload()
-    }, 20000)
+    }, 30000)
   }
 
   function startButtonClick () { 
-    
     moveSnake()
     snakeDirection = 'left'
     setTimeout(() => {
@@ -192,6 +192,11 @@ function init () {
     grid = grid.classList.add('hello')
   }
 
+  function refreshButtonClick(event) { 
+    event.target
+    location.reload()
+  }
+
 
 
 
@@ -206,6 +211,7 @@ function init () {
   //*eventlisteners*//
   document.addEventListener('keydown', handleKeyUp)
   startButton.addEventListener('click', startButtonClick)
+  refreshButton.addEventListener('click', refreshButtonClick)
   createGrid(snakeCurrentPosition)
 }
 window.addEventListener('DOMContentLoaded', init)

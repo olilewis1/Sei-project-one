@@ -146,3 +146,21 @@ img {
   body {flex-direction: column-reverse; }
 }
 
+#Refresh { 
+  display: none;
+}
+
+.refresh2 { 
+  color:#FFDE00;
+  background-color:#3B4CCA;
+  font-family: 'DotGothic16', sans-serif;
+  height: 40px;
+  margin:10px;
+  display:inline;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+.hide { 
+  display: none;
+}
