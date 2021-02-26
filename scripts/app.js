@@ -15,7 +15,8 @@ function init () {
   let speed = 1000
   let snakeDirectionInvalid = 'true'
   let snakeTimer
-  const gameOverPic = document.querySelector('#game-over-span')
+  const gameOverSpan = document.querySelector('#game-over-span')
+  const gameOverPic = document.querySelector('#game-over-pic')
   //*food*//
   const foodClass = 'food'
   //*start button*// 
@@ -153,14 +154,16 @@ function init () {
     clearInterval(snakeTimer)
     console.log(snakeCurrentPosition)
     grid = grid.classList.add('hello')
+    gameOverSpan.classList.add('game-over-span')
+    gameOverSpan.innerHTML = `Game Over Fwend, your final score: ${currentScore} `
     gameOverPic.classList.add('game-over-pic')
-    gameOverPic.innerHTML = `Game Over Fwend, your final score: ${currentScore} <img src='images/icons/tick.png' class='mark'>`
+    gameOverPic.innerHTML = '<img src=https://i.imgur.com/iNEQPBw.png>'
     audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/rkkmtqon/116-victory%20%28vs%20trainer%29.mp3'
     audio.play()
     // stopTimeOut()
     setTimeout(() => {
       location.reload()
-    }, 10000)
+    }, 20000)
   }
 
   function startButtonClick () { 

@@ -105,11 +105,20 @@ button {
   visibility:hidden;
 }
 
-.game-over-pic { 
-  background-image: url(https://static.turbosquid.com/Preview/000290/572/N7/nintendo-gameboy-color-console-3d-ma_D.jpg);
+.game-over-span { 
   display: block;
   visibility: visible;
   font-size: 20px;
   color: #B3A125;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+img { 
+  display: block;
+  visibility: visible;
+  font-size: 20px;
+  color: #B3A125;
+  width: 80px;
+  padding-left: 5px;
 }
 
