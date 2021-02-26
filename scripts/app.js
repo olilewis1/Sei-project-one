@@ -102,9 +102,12 @@ function init () {
       createRandomFood()
       if (speed >= 700) { 
         speed -= 100
+      } else if (speed === 600) {
+        playAudio()
+        speed -= 50
       } else if ( speed >= 300) { 
         speed -= 50
-      } else if (speed > 125) { 
+      } else if (speed > 100) { 
         speed -= 25
       }
       console.log(speed)
