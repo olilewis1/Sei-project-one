@@ -153,9 +153,7 @@ function init () {
   
   function gameOver() { 
     audio.pause()
-    console.log('gameover')
     clearInterval(snakeTimer)
-    console.log(snakeCurrentPosition)
     hideGrid()
     gameOverSpan.classList.add('game-over-span')
     gameOverSpan.innerHTML = `Game Over Fwend, your final score: ${currentScore} `
