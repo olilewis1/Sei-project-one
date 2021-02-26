@@ -8,7 +8,7 @@ function init () {
   const snakeClass = 'snake'
   //multiple divs
   const snakeStartPosition = [3, 4, 5]
-  const snakeCurrentPosition = [3, 4, 5]
+  const snakeCurrentPosition = [148, 149, 150]
   const audio = document.getElementById('audio')
   const audio2 = document.getElementById('audio2')
   let snakeDirection
@@ -109,7 +109,8 @@ function init () {
         speed -= 50
       } else if (speed > 100) { 
         speed -= 25
-      }
+      } else if (speed > 50)
+        speed -= 3
       console.log(speed)
     } else {
       removeSnake() 
@@ -171,12 +172,18 @@ function init () {
 
   function startButtonClick () { 
     moveSnake()
-    audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/gbhogmtx/107-battle%20%28vs%20wild%20pokemon%29.mp3'
-    audio.play()
     snakeDirection = 'left'
+    setTimeout(() => {
+      playAudioStart()
+    }, 1000)
   }
   function playAudio () { 
     audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/vvdpydwp/101-opening.mp3' 
+    audio.play()
+  }
+
+  function playAudioStart() { 
+    audio.src = 'https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/gbhogmtx/107-battle%20%28vs%20wild%20pokemon%29.mp3'
     audio.play()
   }
 
